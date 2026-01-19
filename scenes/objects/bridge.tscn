@@ -1,0 +1,69 @@
+[gd_scene load_steps=11 format=3 uid="uid://cnhkoetwavary"]
+
+[ext_resource type="Script" uid="uid://duuksqam3y3m0" path="res://scripts/items/bridge.gd" id="1_pexfk"]
+[ext_resource type="Texture2D" uid="uid://cvcal0kkh6jv8" path="res://textures/bridge_parts_texture.tres" id="2_pexfk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ca72b"]
+radius = 6.0
+
+[sub_resource type="Gradient" id="Gradient_3k6fr"]
+colors = PackedColorArray(4.1983566, 2.2829926, 1.5864965, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ca72b"]
+gradient = SubResource("Gradient_3k6fr")
+width = 8
+height = 8
+use_hdr = true
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.491453, 0)
+
+[sub_resource type="Gradient" id="Gradient_pexfk"]
+offsets = PackedFloat32Array(0, 0.4813278, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0.47252715, 0.21416822, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_57faa"]
+gradient = SubResource("Gradient_pexfk")
+
+[sub_resource type="Curve" id="Curve_5r4xj"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.2808989, 0.55312496), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_taq8y"]
+curve = SubResource("Curve_5r4xj")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yktxq"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(2, 1, 1)
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -2.2351742e-06
+radial_accel_max = 13.739998
+scale_curve = SubResource("CurveTexture_taq8y")
+color_ramp = SubResource("GradientTexture1D_57faa")
+
+[node name="Bridge" type="Node2D"]
+script = ExtResource("1_pexfk")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(8, 8)
+collision_layer = 8
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_ca72b")
+debug_color = Color(1, 0.7666667, 0, 0.019607844)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_pexfk")
+centered = false
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+visible = false
+position = Vector2(11, 8)
+amount = 9
+amount_ratio = 0.162
+texture = SubResource("GradientTexture2D_ca72b")
+lifetime = 0.4
+process_material = SubResource("ParticleProcessMaterial_yktxq")

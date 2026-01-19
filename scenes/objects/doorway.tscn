@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://gd8dbjwqf00"]
+
+[ext_resource type="Script" uid="uid://cm0mr5gqio6cy" path="res://scripts/items/doorway.gd" id="1_2aw46"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kp5rg"]
+radius = 5.0
+
+[sub_resource type="Gradient" id="Gradient_1e7uk"]
+offsets = PackedFloat32Array(0, 0.48070174, 1)
+colors = PackedColorArray(3.8665109, 3.8665109, 3.8665109, 1, 0, 0, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ubnpl"]
+gradient = SubResource("Gradient_1e7uk")
+width = 16
+height = 16
+use_hdr = true
+fill_to = Vector2(0, 1)
+repeat = 1
+
+[node name="Doorway" type="Node2D"]
+script = ExtResource("1_2aw46")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(8, 8)
+collision_layer = 32
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_kp5rg")
+debug_color = Color(0.8, 0.04000001, 0.7113332, 0.0627451)
+
+[node name="Spotlight" type="PointLight2D" parent="."]
+visible = false
+position = Vector2(8, 8)
+color = Color(0.99999946, 0.98852473, 0.7658357, 1)
+texture = SubResource("GradientTexture2D_ubnpl")

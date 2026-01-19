@@ -1,0 +1,133 @@
+[gd_scene load_steps=9 format=3 uid="uid://67pjm1annom5"]
+
+[ext_resource type="FontFile" uid="uid://3ea2t807hguu" path="res://assets/external/fonts/m5x7.ttf" id="1_ouf4f"]
+[ext_resource type="Script" uid="uid://dasqohrmkeyej" path="res://scripts/ui/start_menu.gd" id="2_thu50"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_thu50"]
+content_margin_top = 1.0
+bg_color = Color(0.42745098, 0.28627452, 0.28235295, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m7x51"]
+bg_color = Color(0, 0, 0, 0.78431374)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uojun"]
+bg_color = Color(0.23921569, 0.14509805, 0.23137255, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.14509805, 0.07450981, 0.101960786, 1)
+
+[sub_resource type="Theme" id="Theme_ouf4f"]
+Button/colors/font_color = Color(0.78, 0.52364, 0.51479995, 1)
+Button/colors/font_focus_color = Color(0.78, 0.52364, 0.51479995, 1)
+Button/colors/font_hover_color = Color(0.78, 0.52364, 0.51479995, 1)
+Button/colors/font_hover_pressed_color = Color(0.78, 0.52364, 0.51479995, 1)
+Button/colors/font_pressed_color = Color(0.78, 0.52364, 0.51479995, 1)
+Button/fonts/font = ExtResource("1_ouf4f")
+HSeparator/styles/separator = SubResource("StyleBoxFlat_thu50")
+Label/colors/font_color = Color(0.42745098, 0.28627452, 0.28235295, 1)
+Label/fonts/font = ExtResource("1_ouf4f")
+Panel/styles/panel = SubResource("StyleBoxFlat_m7x51")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_uojun")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_uojun"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ouf4f"]
+width = 320
+height = 180
+noise = SubResource("FastNoiseLite_uojun")
+
+[node name="StartMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_ouf4f")
+script = ExtResource("2_thu50")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("NoiseTexture2D_ouf4f")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_type_variation = &"HeaderLarge"
+text = "Beginner Jam #1"
+
+[node name="Control2" type="Control" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+
+[node name="StartButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Start Game"
+
+[node name="SettingsButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+text = "Settings"
+
+[node name="QuitButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Quit"

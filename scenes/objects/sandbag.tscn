@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://cx71u0tkb5urh"]
+
+[ext_resource type="Script" uid="uid://y0rr4lv1wigd" path="res://scripts/items/sandbag.gd" id="1_k42bh"]
+[ext_resource type="Texture2D" uid="uid://hh4vsue02v0l" path="res://textures/sandbag_texture.tres" id="2_k42bh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ca72b"]
+radius = 6.0
+
+[sub_resource type="Gradient" id="Gradient_3k6fr"]
+colors = PackedColorArray(4.1983566, 2.2829926, 1.5864965, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ca72b"]
+gradient = SubResource("Gradient_3k6fr")
+width = 8
+height = 8
+use_hdr = true
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.491453, 0)
+
+[sub_resource type="Curve" id="Curve_k42bh"]
+_data = [Vector2(0, 0.03515613), 0.0, 0.0, 0, 0, Vector2(0.505618, 0.46171868), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_btu73"]
+curve = SubResource("Curve_k42bh")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gao1u"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(2, 1, 1)
+gravity = Vector3(0, 98, 0)
+scale_min = 0.5
+scale_max = 1.1999999
+scale_curve = SubResource("CurveTexture_btu73")
+
+[node name="Sandbag" type="Node2D"]
+script = ExtResource("1_k42bh")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(8, 8)
+collision_layer = 8
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_ca72b")
+debug_color = Color(1, 0.7666667, 0, 0.019607844)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(8, 8)
+texture = ExtResource("2_k42bh")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+visible = false
+position = Vector2(10, 5)
+amount = 6
+amount_ratio = 0.4091
+texture = SubResource("GradientTexture2D_ca72b")
+lifetime = 0.4
+process_material = SubResource("ParticleProcessMaterial_gao1u")

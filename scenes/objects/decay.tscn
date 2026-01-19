@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://gfv2617xrpoh"]
+
+[ext_resource type="Script" uid="uid://dymqegoxdy3l3" path="res://scripts/items/decay.gd" id="1_jwo01"]
+[ext_resource type="Shader" uid="uid://bueo1vjv6vcsr" path="res://textures/shaders/decay_tile.gdshader" id="2_h7xlr"]
+[ext_resource type="Texture2D" uid="uid://c62vji4y66ii1" path="res://assets/tiles/floor_tiles.png" id="3_oxtun"]
+[ext_resource type="FontFile" uid="uid://3ea2t807hguu" path="res://assets/external/fonts/m5x7.ttf" id="4_xagxa"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c43tx"]
+shader = ExtResource("2_h7xlr")
+
+[sub_resource type="Gradient" id="Gradient_ibewu"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8imr8"]
+gradient = SubResource("Gradient_ibewu")
+width = 16
+height = 16
+
+[node name="Decay" type="Node2D"]
+script = ExtResource("1_jwo01")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+material = SubResource("ShaderMaterial_c43tx")
+texture = SubResource("GradientTexture2D_8imr8")
+offset = Vector2(8, 8)
+
+[node name="DecaySprite" type="Sprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_c43tx")
+texture = ExtResource("3_oxtun")
+offset = Vector2(8, 8)
+hframes = 4
+
+[node name="ValueCountdown" type="Label" parent="."]
+self_modulate = Color(1, 1, 1, 0.3647059)
+offset_right = 16.0
+offset_bottom = 16.0
+theme_override_fonts/font = ExtResource("4_xagxa")
+text = "5"
+horizontal_alignment = 1
+vertical_alignment = 1

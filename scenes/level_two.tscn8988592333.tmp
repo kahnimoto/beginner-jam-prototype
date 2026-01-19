@@ -1,0 +1,347 @@
+[gd_scene load_steps=18 format=4 uid="uid://defnhonhw5r5g"]
+
+[ext_resource type="Script" uid="uid://ca3tr65ahwjyx" path="res://scripts/game.gd" id="1_kp5rg"]
+[ext_resource type="Script" uid="uid://bvpmuuqij5vl2" path="res://scripts/items/flicking_light.gd" id="2_1e7uk"]
+[ext_resource type="Script" uid="uid://dq5jifbceodtk" path="res://scripts/turn_manager.gd" id="2_brhlk"]
+[ext_resource type="TileSet" uid="uid://c20yitjo5k43l" path="res://tilesets/dungeon_tileset_with_customdata.tres" id="3_sw5gm"]
+[ext_resource type="TileSet" uid="uid://boc35lvpc35o6" path="res://tilesets/dungeon_tileset.tres" id="4_4br1q"]
+[ext_resource type="PackedScene" uid="uid://vq7rf4ypincf" path="res://scenes/key.tscn" id="5_sw5gm"]
+[ext_resource type="PackedScene" uid="uid://gd8dbjwqf00" path="res://scenes/doorway.tscn" id="6_1e7uk"]
+[ext_resource type="PackedScene" uid="uid://cug2kg3one7h2" path="res://scenes/player.tscn" id="6_05hhi"]
+[ext_resource type="PackedScene" uid="uid://ctcwh4vwupgl1" path="res://scenes/monster.tscn" id="7_4br1q"]
+[ext_resource type="Script" uid="uid://bmpdeskr0l1gi" path="res://scripts/ui/top_right_hud.gd" id="7_brhlk"]
+[ext_resource type="Texture2D" uid="uid://b01b2m2gdk0mc" path="res://textures/key_texture.tres" id="8_c43tx"]
+[ext_resource type="FontFile" uid="uid://3ea2t807hguu" path="res://assets/external/fonts/m5x7.ttf" id="10_brhlk"]
+[ext_resource type="Script" uid="uid://qco2hx180wyu" path="res://scripts/ui/flash_message.gd" id="10_ubnpl"]
+
+[sub_resource type="Gradient" id="Gradient_wt17y"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_m7216"]
+gradient = SubResource("Gradient_wt17y")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 1)
+
+[sub_resource type="Theme" id="Theme_3k6fr"]
+GridContainer/constants/h_separation = 0
+GridContainer/constants/v_separation = 0
+MarginContainer/constants/margin_bottom = 4
+MarginContainer/constants/margin_left = 4
+MarginContainer/constants/margin_right = 4
+MarginContainer/constants/margin_top = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1e7uk"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(0.23921569, 0.14509805, 0.23137255, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.29803923, 0.18431373, 0.28627452, 1)
+
+[node name="Playground" type="Node"]
+script = ExtResource("1_kp5rg")
+
+[node name="TurnManager" type="Node" parent="."]
+script = ExtResource("2_brhlk")
+
+[node name="Lights" type="Node2D" parent="."]
+
+[node name="DarkWorld" type="DirectionalLight2D" parent="Lights"]
+energy = 0.71
+blend_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="PointLight2D" type="PointLight2D" parent="Lights"]
+position = Vector2(36, 41)
+scale = Vector2(1.421875, 1.4375)
+color = Color(0.89, 0.30616003, 0.1602, 1)
+energy = 2.0
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_m7216")
+script = ExtResource("2_1e7uk")
+
+[node name="PointLight2D2" type="PointLight2D" parent="Lights"]
+position = Vector2(232.00002, 27)
+scale = Vector2(1.421875, 1.4375)
+color = Color(0.89, 0.30616003, 0.1602, 1)
+energy = 2.0
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_m7216")
+script = ExtResource("2_1e7uk")
+
+[node name="PointLight2D3" type="PointLight2D" parent="Lights"]
+position = Vector2(286, 56)
+scale = Vector2(1.421875, 1.4375)
+color = Color(0.89, 0.30616003, 0.1602, 1)
+energy = 2.0
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_m7216")
+script = ExtResource("2_1e7uk")
+
+[node name="PointLight2D4" type="PointLight2D" parent="Lights"]
+position = Vector2(104, 25)
+scale = Vector2(1.421875, 1.4375)
+color = Color(0.89, 0.30616003, 0.1602, 1)
+energy = 2.0
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_m7216")
+script = ExtResource("2_1e7uk")
+
+[node name="PointLight2D5" type="PointLight2D" parent="Lights"]
+position = Vector2(153, 84)
+scale = Vector2(1.421875, 1.4375)
+color = Color(0.89, 0.30616003, 0.1602, 1)
+energy = 2.0
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_m7216")
+script = ExtResource("2_1e7uk")
+
+[node name="PointLight2D6" type="PointLight2D" parent="Lights"]
+position = Vector2(35, 120)
+scale = Vector2(1.421875, 1.4375)
+color = Color(0.89, 0.30616003, 0.1602, 1)
+energy = 2.0
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_m7216")
+script = ExtResource("2_1e7uk")
+
+[node name="PointLight2D7" type="PointLight2D" parent="Lights"]
+position = Vector2(285, 120.00001)
+scale = Vector2(1.421875, 1.4375)
+color = Color(0.89, 0.30616003, 0.1602, 1)
+energy = 2.0
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_m7216")
+script = ExtResource("2_1e7uk")
+
+[node name="PointLight2D8" type="PointLight2D" parent="Lights"]
+position = Vector2(230, 163)
+scale = Vector2(1.421875, 1.4375)
+color = Color(0.89, 0.30616003, 0.1602, 1)
+energy = 2.0
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_m7216")
+script = ExtResource("2_1e7uk")
+
+[node name="PointLight2D9" type="PointLight2D" parent="Lights"]
+position = Vector2(107, 165)
+scale = Vector2(1.421875, 1.4375)
+color = Color(0.89, 0.30616003, 0.1602, 1)
+energy = 2.0
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_m7216")
+script = ExtResource("2_1e7uk")
+
+[node name="Scenery" type="Node2D" parent="."]
+
+[node name="DungeonBackground" type="TileMapLayer" parent="Scenery" groups=["dungeon", "tilemap"]]
+unique_name_in_owner = true
+tile_map_data = PackedByteArray("AAAQAAkAAAACAAMAAAAQAAgAAAAJAAAAAAAQAAcAAAAIAAEAAAAQAAYAAAAHAAEAAAAQAAUAAAAIAAEAAAAQAAQAAAABAAcAAAAQAAMAAAABAAcAAAAQAAIAAAADAAYAAAAQAAEAAAABAAAAAAAQAAAAAAAIAAcAAAAPAAkAAAACAAMAAAAPAAgAAAAIAAEAAAAPAAcAAAADAAIAAAAPAAYAAAAIAAEAAAAPAAUAAAAIAAEAAAAPAAQAAAADAAIAAAAPAAMAAAADAAIAAAAPAAIAAAADAAYAAAAPAAEAAAACAAAAAAAPAAAAAAAIAAcAAAAOAAkAAAADAAMAAAAOAAYAAAADAAIAAAAOAAUAAAAIAAEAAAAOAAQAAAAJAAEAAAAOAAMAAAAIAAEAAAAOAAIAAAACAAYAAAAOAAEAAAAEAAAAAAAOAAAAAAAIAAcAAAANAAkAAAACAAMAAAANAAYAAAAJAAIAAAANAAUAAAAJAAEAAAANAAQAAAAJAAEAAAANAAMAAAAIAAEAAAANAAIAAAADAAEAAAANAAEAAAADAAAAAAANAAAAAAAIAAcAAAAMAAkAAAADAAMAAAAMAAYAAAAHAAEAAAAMAAUAAAAGAAEAAAAMAAQAAAABAAcAAAAMAAMAAAAIAAEAAAAMAAIAAAADAAEAAAAMAAEAAAACAAAAAAAMAAAAAAAIAAcAAAALAAkAAAADAAMAAAALAAYAAAACAAcAAAALAAUAAAADAAcAAAALAAQAAAACAAcAAAALAAMAAAADAAIAAAALAAIAAAACAAEAAAALAAEAAAAEAAAAAAALAAAAAAAIAAcAAAAKAAkAAAADAAMAAAAKAAYAAAACAAcAAAAKAAUAAAACAAcAAAAKAAQAAAACAAcAAAAKAAMAAAADAAIAAAAKAAIAAAADAAEAAAAKAAEAAAABAAAAAAAKAAAAAAAIAAcAAAAJAAkAAAADAAMAAAAJAAYAAAACAAcAAAAJAAUAAAAJAAEAAAAJAAQAAAACAAcAAAAJAAMAAAAJAAIAAAAJAAIAAAADAAcAAAAJAAEAAAAIAAMAAAAJAAAAAAAIAAcAAAAIAAkAAAACAAMAAAAIAAYAAAACAAcAAAAIAAUAAAACAAcAAAAIAAQAAAACAAcAAAAIAAMAAAAJAAIAAAAIAAIAAAACAAYAAAAIAAEAAAACAAAAAAAIAAAAAAAIAAcAAAAHAAkAAAADAAMAAAAHAAYAAAADAAcAAAAHAAUAAAADAAcAAAAHAAQAAAADAAcAAAAHAAMAAAAIAAEAAAAHAAIAAAADAAYAAAAHAAEAAAAEAAAAAAAHAAAAAAAIAAcAAAAGAAkAAAACAAMAAAAGAAYAAAAJAAEAAAAGAAUAAAAIAAIAAAAGAAQAAAAAAAcAAAAGAAMAAAAIAAEAAAAGAAIAAAADAAEAAAAGAAEAAAAEAAAAAAAGAAAAAAAIAAcAAAAFAAkAAAADAAMAAAAFAAYAAAAIAAEAAAAFAAUAAAAIAAEAAAAFAAQAAAAIAAEAAAAFAAMAAAADAAIAAAAFAAIAAAABAAYAAAAFAAEAAAAEAAAAAAAFAAAAAAAIAAcAAAAEAAkAAAACAAMAAAAEAAYAAAADAAIAAAAEAAUAAAAIAAEAAAAEAAQAAAAIAAEAAAAEAAMAAAAJAAEAAAAEAAIAAAAAAAYAAAAEAAEAAAADAAAAAAAEAAAAAAAIAAcAAAATAAkAAAAIAAcAAAATAAgAAAAIAAcAAAATAAcAAAAIAAcAAAATAAYAAAAIAAcAAAATAAUAAAAIAAcAAAATAAQAAAAIAAcAAAATAAMAAAAIAAcAAAATAAIAAAAIAAcAAAATAAEAAAAIAAcAAAATAAAAAAAIAAcAAAASAAkAAAAFAAEAAAASAAgAAAAFAAEAAAASAAcAAAAFAAIAAAASAAYAAAAFAAIAAAASAAUAAAAFAAEAAAASAAQAAAAFAAIAAAASAAMAAAAFAAIAAAASAAIAAAAFAAMAAAASAAEAAAAFAAMAAAASAAAAAAAIAAcAAAARAAkAAAAEAAMAAAARAAgAAAAEAAIAAAARAAcAAAAEAAIAAAARAAYAAAAEAAIAAAARAAUAAAAEAAIAAAARAAQAAAAEAAIAAAARAAMAAAAEAAIAAAARAAIAAAAEAAEAAAARAAEAAAADAAAAAAARAAAAAAAIAAcAAAADAAkAAAACAAMAAAADAAgAAAACAAcAAAADAAcAAAAIAAEAAAADAAYAAAADAAIAAAADAAUAAAAHAAAAAAADAAQAAAAIAAEAAAADAAMAAAAJAAEAAAADAAIAAAABAAYAAAADAAEAAAACAAAAAAADAAAAAAAIAAcAAAACAAkAAAABAAMAAAACAAgAAAABAAIAAAACAAcAAAABAAIAAAACAAYAAAABAAIAAAACAAUAAAABAAIAAAACAAQAAAABAAIAAAACAAMAAAABAAIAAAACAAIAAAABAAEAAAACAAEAAAABAAAAAAACAAAAAAAIAAcAAAABAAkAAAAAAAMAAAABAAgAAAAAAAMAAAABAAcAAAAAAAIAAAABAAYAAAAAAAIAAAABAAUAAAAAAAIAAAABAAQAAAAAAAEAAAABAAMAAAAAAAEAAAABAAIAAAAAAAEAAAABAAEAAAAAAAAAAAABAAAAAAAIAAcAAAAAAAkAAAAIAAcAAAAAAAgAAAAIAAcAAAAAAAcAAAAIAAcAAAAAAAYAAAAIAAcAAAAAAAUAAAAIAAcAAAAAAAQAAAAIAAcAAAAAAAMAAAAIAAcAAAAAAAIAAAAIAAcAAAAAAAEAAAAIAAcAAAAAAAAAAAAIAAcAAAAEAAgAAAADAAIAAAAEAAcAAAADAAIAAAANAAgAAAAIAAEAAAAMAAgAAAADAAIAAAALAAgAAAAIAAEAAAAKAAgAAAADAAIAAAAJAAgAAAADAAIAAAAIAAgAAAAJAAEAAAAHAAgAAAADAAIAAAAGAAgAAAAIAAEAAAAFAAgAAAADAAIAAAAOAAgAAAAIAAEAAAAOAAcAAAADAAIAAAATAAoAAAAIAAcAAAASAAoAAAAFAAQAAAARAAoAAAADAAQAAAAQAAoAAAABAAQAAAAPAAoAAAADAAQAAAAOAAoAAAADAAQAAAANAAoAAAACAAUAAAAMAAoAAAABAAQAAAALAAoAAAACAAQAAAAKAAoAAAACAAQAAAAJAAoAAAAEAAQAAAAIAAoAAAACAAQAAAAHAAoAAAAEAAQAAAAGAAoAAAAEAAQAAAAFAAoAAAAEAAQAAAAEAAoAAAACAAUAAAADAAoAAAADAAQAAAACAAoAAAADAAQAAAABAAoAAAAAAAQAAAAAAAoAAAAIAAcAAAABAAsAAAAIAAcAAAATAAsAAAAIAAcAAAASAAsAAAAIAAcAAAARAAsAAAAIAAcAAAAQAAsAAAAIAAcAAAAPAAsAAAAIAAcAAAAOAAsAAAAIAAcAAAANAAsAAAAIAAcAAAAMAAsAAAAIAAcAAAALAAsAAAAIAAcAAAAKAAsAAAAIAAcAAAAJAAsAAAAIAAcAAAAIAAsAAAAIAAcAAAAHAAsAAAAIAAcAAAAGAAsAAAAIAAcAAAAFAAsAAAAIAAcAAAAEAAsAAAAIAAcAAAADAAsAAAAIAAcAAAACAAsAAAAIAAcAAAATAP//AAAIAAcAAAASAP//AAAIAAcAAAARAP//AAAIAAcAAAAQAP//AAAIAAcAAAAPAP//AAAIAAcAAAAOAP//AAAIAAcAAAANAP//AAAIAAcAAAAMAP//AAAIAAcAAAALAP//AAAIAAcAAAAKAP//AAAIAAcAAAAJAP//AAAIAAcAAAAIAP//AAAIAAcAAAAHAP//AAAIAAcAAAAGAP//AAAIAAcAAAAFAP//AAAIAAcAAAAEAP//AAAIAAcAAAADAP//AAAIAAcAAAACAP//AAAIAAcAAAABAP//AAAIAAcAAAAAAP//AAAIAAcAAAANAAcAAAAIAAEAAAAMAAcAAAAJAAEAAAALAAcAAAACAAcAAAAKAAcAAAACAAcAAAAJAAcAAAAAAAcAAAAIAAcAAAACAAcAAAAHAAcAAAADAAIAAAAGAAcAAAAJAAAAAAAFAAcAAAAIAAAAAAD//wkAAAAIAAcAAAD//wgAAAAIAAcAAAD//wcAAAAIAAcAAAD//wYAAAAIAAcAAAD//wUAAAAIAAcAAAD//wQAAAAIAAcAAAD//wMAAAAIAAcAAAD//wIAAAAIAAcAAAD//wEAAAAIAAcAAAD//wAAAAAIAAcAAAD/////AAAIAAcAAAAVAAsAAAAIAAcAAAAVAAoAAAAIAAcAAAAVAAkAAAAIAAcAAAAVAAgAAAAIAAcAAAAVAAcAAAAIAAcAAAAVAAYAAAAIAAcAAAAVAAUAAAAIAAcAAAAVAAQAAAAIAAcAAAAVAAMAAAAIAAcAAAAVAAIAAAAIAAcAAAAVAAEAAAAIAAcAAAAVAAAAAAAIAAcAAAAVAP//AAAIAAcAAAAUAAsAAAAIAAcAAAAUAAoAAAAIAAcAAAAUAAkAAAAIAAcAAAAUAAgAAAAIAAcAAAAUAAcAAAAIAAcAAAAUAAYAAAAIAAcAAAAUAAUAAAAIAAcAAAAUAAQAAAAIAAcAAAAUAAMAAAAIAAcAAAAUAAIAAAAIAAcAAAAUAAEAAAAIAAcAAAAUAAAAAAAIAAcAAAAUAP//AAAIAAcAAAAAAAsAAAAIAAcAAAD//wsAAAAIAAcAAAD//woAAAAIAAcAAAA=")
+tile_set = ExtResource("3_sw5gm")
+
+[node name="Objects" type="TileMapLayer" parent="Scenery"]
+tile_map_data = PackedByteArray("AAAJAAUAAQADAAkAAAAHAAMAAQAHAAcAAAAMAAUAAQAIAAYAAAAHAAcAAQAEAAYAAAACAAcAAQABAAkAAAACAAIAAQABAAkAAAARAAcAAQABAAkAABARAAMAAQABAAkAABAGAAEAAQAAAAkAAAAOAAEAAQAAAAkAAAAEAAEAAQAFAAcAAAAQAAEAAQAEAAcAAAAMAAEAAQAEAAcAAAARAAIAAQAFAAYAAAADAAUAAQAJAAUAAAA=")
+tile_set = ExtResource("4_4br1q")
+
+[node name="Key" parent="Scenery" instance=ExtResource("5_sw5gm")]
+position = Vector2(96, 80)
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="Doorway" parent="World" instance=ExtResource("6_1e7uk")]
+position = Vector2(144, 32)
+
+[node name="Monster" parent="World" instance=ExtResource("7_4br1q")]
+position = Vector2(240, 48)
+
+[node name="PathNodes" type="Node2D" parent="World/Monster"]
+
+[node name="Marker2D3" type="Marker2D" parent="World/Monster/PathNodes"]
+position = Vector2(0, 48)
+
+[node name="Marker2D4" type="Marker2D" parent="World/Monster/PathNodes"]
+position = Vector2(-128, 48)
+
+[node name="Marker2D5" type="Marker2D" parent="World/Monster/PathNodes"]
+position = Vector2(-128, 0)
+
+[node name="Marker2D6" type="Marker2D" parent="World/Monster/PathNodes"]
+
+[node name="Monster2" parent="World" instance=ExtResource("7_4br1q")]
+position = Vector2(80, 64)
+
+[node name="PathNodes" type="Node2D" parent="World/Monster2"]
+
+[node name="Marker2D3" type="Marker2D" parent="World/Monster2/PathNodes"]
+position = Vector2(48, 0)
+
+[node name="Marker2D4" type="Marker2D" parent="World/Monster2/PathNodes"]
+position = Vector2(48, 32)
+
+[node name="Marker2D5" type="Marker2D" parent="World/Monster2/PathNodes"]
+position = Vector2(0, 32)
+
+[node name="Marker2D6" type="Marker2D" parent="World/Monster2/PathNodes"]
+
+[node name="Player" parent="." instance=ExtResource("6_05hhi")]
+unique_name_in_owner = true
+position = Vector2(176, 80)
+grid_position = Vector2i(11, 5)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_3k6fr")
+
+[node name="TopRight" type="Control" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -89.0
+offset_bottom = 62.0
+grow_horizontal = 0
+script = ExtResource("7_brhlk")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/TopRight"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/Control/TopRight/MarginContainer"]
+layout_mode = 2
+columns = 5
+
+[node name="Control" type="Control" parent="CanvasLayer/Control/TopRight/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="HasKeyHud" type="TextureRect" parent="CanvasLayer/Control/TopRight/MarginContainer/GridContainer/Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_c43tx")
+expand_mode = 2
+
+[node name="Control2" type="Control" parent="CanvasLayer/Control/TopRight/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="ValueTurn" type="Label" parent="CanvasLayer/Control/TopRight/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+theme_type_variation = &"HeaderSmall"
+theme_override_fonts/font = ExtResource("10_brhlk")
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control4" type="Control" parent="CanvasLayer/Control/TopRight/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="Control5" type="Control" parent="CanvasLayer/Control/TopRight/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="WinMessage" type="Control" parent="CanvasLayer/Control"]
+visible = false
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("10_ubnpl")
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Control/WinMessage"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Control/WinMessage/CenterContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1e7uk")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/WinMessage/CenterContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="CanvasLayer/Control/WinMessage/CenterContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "YOU WIN!!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="CanvasLayer/Control/WinMessage/CenterContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10_brhlk")
+text = "<SPACE> to go again"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LostMessage" type="Control" parent="CanvasLayer/Control"]
+visible = false
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("10_ubnpl")
+type = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Control/LostMessage"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Control/LostMessage/CenterContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1e7uk")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/LostMessage/CenterContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/LostMessage/CenterContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "GAME OVER!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="CanvasLayer/Control/LostMessage/CenterContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10_brhlk")
+text = "<SPACE> to go again"
+horizontal_alignment = 1
+vertical_alignment = 1

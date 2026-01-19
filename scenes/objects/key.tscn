@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://vq7rf4ypincf"]
+
+[ext_resource type="Script" uid="uid://cjv0rt1buyi3d" path="res://scripts/items/key.gd" id="1_fttkb"]
+[ext_resource type="Texture2D" uid="uid://b01b2m2gdk0mc" path="res://textures/key_texture.tres" id="2_wy8tx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ca72b"]
+radius = 6.0
+
+[sub_resource type="Gradient" id="Gradient_3k6fr"]
+colors = PackedColorArray(4.1983566, 2.2829926, 1.5864965, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ca72b"]
+gradient = SubResource("Gradient_3k6fr")
+width = 8
+height = 8
+use_hdr = true
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.491453, 0)
+
+[sub_resource type="Curve" id="Curve_qv4wy"]
+_data = [Vector2(0.022471912, 0), 0.0, 1.2587541, 0, 0, Vector2(0.23220974, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -0.31227335, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_e4814"]
+curve = SubResource("Curve_qv4wy")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ook2w"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(4, 2, 3)
+angle_min = -89.99999
+angle_max = 90.000015
+direction = Vector3(0, -1, 0)
+spread = 20.0
+initial_velocity_min = 8.0
+initial_velocity_max = 16.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_e4814")
+
+[node name="Key" type="Node2D"]
+script = ExtResource("1_fttkb")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(8, 8)
+collision_layer = 8
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_ca72b")
+debug_color = Color(1, 0.7666667, 0, 0.019607844)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(8, 8)
+texture = ExtResource("2_wy8tx")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+visible = false
+position = Vector2(8, 8)
+amount = 6
+texture = SubResource("GradientTexture2D_ca72b")
+process_material = SubResource("ParticleProcessMaterial_ook2w")
