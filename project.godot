@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Beginner Jam Prototype"
-config/tags=PackedStringArray("jam", "prototype")
+config/tags=PackedStringArray("bjam", "prototype")
 run/main_scene="uid://67pjm1annom5"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 run/max_fps=60
