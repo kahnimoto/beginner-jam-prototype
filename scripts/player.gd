@@ -48,6 +48,9 @@ func move_character() -> void:
 	var desired_location: Vector2i = grid_position + (desired_movement as Vector2i)
 	if Map.is_wall(desired_location):
 		# TODO add some rejection animation and sound
+		if _ended_on_ice:
+			_ended_on_ice = false
+			move_character()
 		return
 	Events.player_initiated_turn.emit()
 	Events.play_left_square.emit(grid_position)

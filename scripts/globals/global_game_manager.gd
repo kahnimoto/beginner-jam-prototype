@@ -45,13 +45,13 @@ func _ready() -> void:
 ## Start a new game
 func new_game() -> void:
 	levels = [
+		ICE_THREE,
 		#TEST_ONE,
 		LEVEL_ONE,
 		LEVEL_FOUR,
 		#LEVEL_TWO,
 		LEVEL_THREE,
 		ICE_TWO,
-		ICE_THREE,
 	]
 	_on_level_completed()
 
