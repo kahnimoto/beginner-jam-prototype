@@ -14,9 +14,11 @@ Import to Godot 4.5.1 and run :D
 4. On the `Objects` tilemaplayer, pick and place decorative items. At least place some torches, otherwise the game will be dark.
 5. The decorative torches dont make lights, so in the `Lights` Node, delete all but 1 `PointLight2D` then place it on one of your decorative torches. Copy it and place copies on all your decorative torches. The lights are the exception to the grid snap, turn off grid snap and place them on the torches.
 6. Next we place objects in the world the player can pick up. Use the ones in the level or instantate scenes. When moving these objects, make sure the Grid Snap is enabled and configured to 16 pixels
-    6.1. `Key` the map should have exactly 1 key object
-    6.2. `Bridge` player can only carry 1 at a time
-    6.3. `Sandbag` player can carry 3 at a time
+    6.1. `Key` the map must have at least 1 key object
+    6.2. `Doorway` the map needs at least 1 doorway
+    6.3. `Bridge` player can only carry 1 at a time
+    6.4. `Sandbag` player can carry 3 at a time
+When placing the doorway, place it on an inside node, not on the door. On the node, change the export variable to tell it which direction the door is. This is used for the spotlight feature.
 7. In the world there can be Monsters, instantiate or copy this. Moving them on the grid with Grid Snap like objects. If you want them to move, add a child (in the level scene, not monster scene), called `PathNodes` and under this put Marker2D, at least two. The markers also need to be on the grid and walkable in direct cardinal lines.
 8. Using Grid Snap to place the player where you want them to start.
 9. In `global_game_manager.gd` ctrl+drag the new level.tscn file you made into the top of the file so it becomes a new const, i.e. `const LEVEL_ONE = preload("uid://c0rjmcisgel26")`. Then lower in the file add this to the levels array, maybe first so you can easily test it.
