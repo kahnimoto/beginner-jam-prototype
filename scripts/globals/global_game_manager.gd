@@ -7,6 +7,8 @@ const LEVEL_THREE = preload("uid://bmo5w2c86foo1")
 const LEVEL_FOUR = preload("uid://ch21n7wdbhsr5")
 const TEST_ONE = preload("uid://ieqnodo2xffy")
 const ICE_TWO = preload("uid://123fvdy454jp")
+const ICE_THREE = preload("uid://cmwp6varoqepk")
+
 const MAX_SANDBAGS = 3
 const AUTOMATIC_RESTART = false
 
@@ -44,11 +46,12 @@ func _ready() -> void:
 func new_game() -> void:
 	levels = [
 		#TEST_ONE,
-		ICE_TWO,
 		LEVEL_ONE,
 		LEVEL_FOUR,
 		#LEVEL_TWO,
 		LEVEL_THREE,
+		ICE_TWO,
+		ICE_THREE,
 	]
 	_on_level_completed()
 
