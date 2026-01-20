@@ -12,7 +12,7 @@ func _ready() -> void:
 	Events.has_key_changed.connect(_on_has_key_changed)
 	Events.turn_started.connect(_on_turn_started)
 	Events.turn_completed.connect(_on_turn_completed)
-	Events.sand_picked_up.connect(_on_sandbags_changed)
+	Events.sandbags_changed.connect(_on_sandbags_changed)
 	Events.bridge_picked_up.connect(_on_bridge_parts_changed.bind(true))
 	Events.bridge_used.connect(_on_bridge_parts_changed.bind(false))
 

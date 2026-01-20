@@ -18,7 +18,7 @@ signal new_pit_created(pos: Vector2i)
 signal has_key_changed(new_value: bool)
 signal key_picked_up
 signal key_used
-signal sand_picked_up(new_count: int)
+signal sandbags_changed(new_count: int)
 signal sand_used
 signal bridge_picked_up
 signal bridge_used

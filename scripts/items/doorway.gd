@@ -20,12 +20,8 @@ func open() -> bool:
 
 func _on_key_picked_up() -> void:
 	match direction_to_door:
-		Dir.NORTH:
-			spotlight.position += Vector2.UP * Map.tile_size
-		Dir.EAST:
-			spotlight.position += Vector2.RIGHT * Map.tile_size
-		Dir.SOUTH:
-			spotlight.position += Vector2.DOWN * Map.tile_size
-		Dir.WEST:
-			spotlight.position += Vector2.LEFT * Map.tile_size
+		Dir.NORTH: spotlight.position += Vector2.UP * Map.tile_size
+		Dir.EAST: spotlight.position += Vector2.RIGHT * Map.tile_size
+		Dir.SOUTH: spotlight.position += Vector2.DOWN * Map.tile_size
+		Dir.WEST: spotlight.position += Vector2.LEFT * Map.tile_size
 	spotlight.show()

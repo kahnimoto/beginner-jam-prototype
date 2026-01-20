@@ -26,7 +26,7 @@ var sandbags: int = 0:
 		v = clampi(v, 0, MAX_SANDBAGS)
 		if sandbags != v:
 			sandbags = v
-			Events.sand_picked_up.emit(v)
+			Events.sandbags_changed.emit(v)
 var bridge: bool = false
 
 
@@ -127,7 +127,6 @@ func _on_level_completed() -> void:
 		if _current_level == null:
 			push_error("NO LEVEL??")
 			return
-		print(_current_level)
 		get_tree().call_deferred("change_scene_to_packed", _current_level)
 		if not get_tree().scene_changed.is_connected(_on_scene_changed):
 			get_tree().scene_changed.connect(_on_scene_changed)
