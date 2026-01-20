@@ -1,11 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://gfv2617xrpoh"]
+[gd_scene load_steps=5 format=3 uid="uid://gfv2617xrpoh"]
 
 [ext_resource type="Script" uid="uid://dymqegoxdy3l3" path="res://scripts/items/decay.gd" id="1_jwo01"]
-[ext_resource type="Shader" uid="uid://bueo1vjv6vcsr" path="res://textures/shaders/decay_tile.gdshader" id="2_h7xlr"]
 [ext_resource type="FontFile" uid="uid://3ea2t807hguu" path="res://assets/external/fonts/m5x7.ttf" id="4_xagxa"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_c43tx"]
-shader = ExtResource("2_h7xlr")
 
 [sub_resource type="Gradient" id="Gradient_ibewu"]
 offsets = PackedFloat32Array(0)
@@ -21,7 +17,6 @@ script = ExtResource("1_jwo01")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
-material = SubResource("ShaderMaterial_c43tx")
 texture = SubResource("GradientTexture2D_8imr8")
 offset = Vector2(8, 8)
 
