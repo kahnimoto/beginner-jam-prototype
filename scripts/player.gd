@@ -97,7 +97,7 @@ func fall_complete() -> void:
 # how do we react when a pit is created where we stand? we fall!
 func _on_new_pit_created(location: Vector2i) -> void:
 	if location == grid_position:
-		fall()
+		fall_or_build()
 
 
 # What did we walk into?
