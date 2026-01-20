@@ -12,7 +12,7 @@ Import to Godot 4.5.1 and run :D
 2. Under `Scenery` node, there are 2 TileMapLayers, `DungeonBackground` is the important one that will control the map, while `Objects` are purely decorative. You can select either and draw a rectable with right mouse button to erase the current level. Then use the terrains in the Dungon tilmap to draw the map. Start drawing a big square of "Blank", then draw the interior walkable area with "Inside" and lastly draw the outline of the inside with "Dungeon" (aka walls). 
 3. On the `DungeonBackground` tilemaplayer, using Tiles instead of Terrains, pick and draw individual challenge tiles like the different types of ice, pits or decaying tiles with different timer. The green tile will not decay. Place a door somewhere the player can get to.
 4. On the `Objects` tilemaplayer, pick and place decorative items. At least place some torches, otherwise the game will be dark.
-5. The decorative torches dont make lights, so in the `Lights` Node, delete all but 1 `PointLight2D` then place it on one of your decorative torches. Copy it and place copies on all your decorative torches.
+5. The decorative torches dont make lights, so in the `Lights` Node, delete all but 1 `PointLight2D` then place it on one of your decorative torches. Copy it and place copies on all your decorative torches. The lights are the exception to the grid snap, turn off grid snap and place them on the torches.
 6. Next we place objects in the world the player can pick up. Use the ones in the level or instantate scenes. When moving these objects, make sure the Grid Snap is enabled and configured to 16 pixels
     6.1. `Key` the map should have exactly 1 key object
     6.2. `Bridge` player can only carry 1 at a time
