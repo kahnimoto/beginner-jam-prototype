@@ -14,8 +14,9 @@ var _last_moved_direction := Vector2.ZERO
 
 @onready var sprite: Sprite2D = %CharacterSprite
 @onready var player_area: Area2D = $Area2D
-@onready var shadow: Sprite2D = $Shadow
+@onready var shadow: Sprite2D = %Shadow
 @onready var animation: AnimationPlayer = $AnimationPlayer
+@onready var player_visual: Node2D = %PlayerVisual
 #endregion
 
 
@@ -47,11 +48,19 @@ func move_character() -> void:
 	_last_moved_direction = desired_movement
 	var desired_location: Vector2i = grid_position + (desired_movement as Vector2i)
 	if Map.is_wall(desired_location):
-		# TODO add some rejection animation and sound
 		if _ended_on_ice:
 			_ended_on_ice = false
-			move_character()
-		return
+			return
+		else:
+			var bounce_tween := create_tween()
+			bounce_tween.tween_property(player_visual, "position", desired_movement * 8.0, TurnManager.TURN_DURATION/2).set_ease(Tween.EASE_IN)
+			bounce_tween.chain().tween_property(player_visual, "position", Vector2.ZERO, TurnManager.TURN_DURATION/4).set_trans(Tween.TRANS_ELASTIC)
+			bounce_tween.parallel().tween_property(self, "modulate", Color(Color.ORANGE_RED, 0.4), TurnManager.TURN_DURATION/4)
+			bounce_tween.chain().tween_property(self, "modulate", Color.WHITE, TurnManager.TURN_DURATION/4)
+			bounce_tween.tween_callback(move_ended.emit.bind(grid_position))
+			# TODO a bounce sound?
+			return
+	# Initiate turn only once we know the player will actually move
 	Events.player_initiated_turn.emit()
 	Events.play_left_square.emit(grid_position)
 	_is_moving = true
